@@ -8,12 +8,16 @@ export default function Filmes() {
     const [filmes, setFilmes] = useState([]);
     const [isLoading, setLoading] = useState(true);
 
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/api/Filmes')
+    //         .then((response) => response.json())
+    //         .then((json) => setFilmes(json.titulo))
+    //         .catch((error) => console.error(error))
+    //         .finally(() => setLoading(false));
+    // }, [])
+
     useEffect(() => {
-        fetch('http://localhost:5000/api/Filmes')
-            .then((response) => response.json())
-            .then((json) => setFilmes(json.filmes))
-            .catch((error) => console.error(error))
-            .finally(() => setLoading(false));
+        buscar();
     }, [])
 
 
@@ -51,19 +55,26 @@ export default function Filmes() {
 
             <View style={styles.corpo}>
                 <Text style={styles.tltCorpo}>Lista de Filmes</Text>
+                {
+                    filmes.map((item: any) => {
+                        return(
+                        <Text key={item.id} style={styles.lista}>{item.titulo}</Text>
+                        )
+                    })
+                }
 
                 {isLoading ? <ActivityIndicator /> : (
                     <FlatList
                         data={filmes}
                         keyExtractor={({ id }, index) => id}
                         renderItem={(item: any) => (
-                            <Text>{item.titulo}</Text>
+                            <Text >{item.titulo}</Text>
                         )}
                     />
                 )}
 
             </View>
-            <Footer />
+            <Footer/>
         </View>
     );
 }
@@ -98,6 +109,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     lista: {
-
+        marginLeft: 20,
+        fontSize: 25,
     }
 });
