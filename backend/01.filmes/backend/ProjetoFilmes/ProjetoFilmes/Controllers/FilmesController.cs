@@ -35,7 +35,6 @@ namespace ProjetoFilmes.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de filmes</returns>
         [HttpGet]
-        [Authorize]
         public IActionResult Listar()
         {
             return Ok(_filmeRepository.Listar());
@@ -47,7 +46,6 @@ namespace ProjetoFilmes.Controllers
         /// <param name="id">ID do filme que será buscado</param>
         /// <returns>Retorna um filme buscado</returns>
         [HttpGet("{id}")]
-        [Authorize]
         public IActionResult ListarPorId(int id)
         {
             try
@@ -73,7 +71,6 @@ namespace ProjetoFilmes.Controllers
         /// <param name="novoFilme"></param>
         /// <returns>Retorna um status code</returns>
         [HttpPost]
-        [Authorize(Roles = "Administrador")]
         public IActionResult Cadastrar(Filme novoFilme)
         {
             try
@@ -95,7 +92,6 @@ namespace ProjetoFilmes.Controllers
         /// <param name="filmeAtualizado">Objeto com as novas informações</param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize(Roles = "Administrador")]
         public IActionResult Atualizar(int id, Filme filmeAtualizado)
         {
             try
@@ -123,7 +119,6 @@ namespace ProjetoFilmes.Controllers
         /// <param name="id">ID do filme que será deletado</param>
         /// <returns>Retorna um status code</returns>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Administrador")]
         public IActionResult Deletar(int id)
         {
             try

@@ -1,0 +1,12 @@
+{
+  "name": "filmes-crud-second-version",
+  "displayName": "filmes-crud-second-version",
+  "expo": {
+    "name": "filmes-crud-second-version",
+    "slug": "filmes-crud-second-version",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
